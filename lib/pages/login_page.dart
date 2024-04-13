@@ -38,6 +38,11 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
+                      style: ButtonStyle(
+                          foregroundColor:
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Colors.deepPurple)),
                       onPressed: () {
                         print("Hi ");
                       },
