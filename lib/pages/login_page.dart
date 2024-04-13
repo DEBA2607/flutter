@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_catalog/utils/routes.dart";
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -25,29 +26,31 @@ class LoginPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-              child: Column(
-                children: [
-                  TextFormField(
-                    decoration: const InputDecoration(
-                        hintText: "Enter User Name", labelText: "User Name"),
-                  ),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                        hintText: "Enter Password", labelText: "Password"),
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                      style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Colors.deepPurple)),
-                      onPressed: () {
-                        print("Hi ");
-                      },
-                      child: const Text("Login"))
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: const InputDecoration(
+                          hintText: "Enter User Name", labelText: "User Name"),
+                    ),
+                    TextFormField(
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                          hintText: "Enter Password", labelText: "Password"),
+                    ),
+                    const SizedBox(height: 50),
+                    ElevatedButton(
+                        style: ButtonStyle(
+                            foregroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Colors.deepPurple)),
+                        onPressed: () {
+                          Navigator.pushNamed(context, MyRoutes.homeRoute);
+                        },
+                        child: const Text("Login"))
+                  ],
+                ),
               ),
             )
           ],
