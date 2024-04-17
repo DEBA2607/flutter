@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import "package:flutter/material.dart";
 import "package:flutter_catalog/utils/routes.dart";
 
@@ -11,6 +13,22 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String name = " ";
   bool changeButton = false;
+  final _formkey = GlobalKey<FormState>();
+  moveToHome(BuildContext context) async {
+    if (_formkey.currentState!.validate()) {
+      setState(() {
+        changeButton = true;
+      });
+      await Future.delayed(const Duration(seconds: 1));
+      {
+        await Navigator.pushNamed(context, MyRoutes.homeRoute);
+      }
+      setState(() {
+        changeButton = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -34,56 +52,70 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
               child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    TextFormField(
-                      decoration: const InputDecoration(
-                          hintText: "Enter User Name", labelText: "User Name"),
-                      onChanged: (value) {
-                        setState(() {});
-                        name = value;
-                      },
-                    ),
-                    TextFormField(
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                          hintText: "Enter Password", labelText: "Password"),
-                    ),
-                    const SizedBox(height: 50),
-                    InkWell(
-                      onTap: () async {
-                        setState(() {
-                          changeButton = true;
-                        });
-                        await Future.delayed(const Duration(seconds: 1));
-                        {
-                          Navigator.pushNamed(context, MyRoutes.homeRoute);
-                        }
-                      },
-                      child: AnimatedContainer(
-                        duration: const Duration(seconds: 1),
-                        width: changeButton ? 50 : 150,
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.deepPurple,
-                            borderRadius:
-                                BorderRadius.circular(changeButton ? 50 : 8)),
-                        child: changeButton
-                            ? const Icon(
-                                Icons.done,
-                                color: Colors.white,
-                              )
-                            : const Text(
-                                "Login",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 17),
-                              ),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            hintText: "Enter User Name",
+                            labelText: "User Name"),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Username cannot be empty";
+                          } else {
+                            return null;
+                          }
+                        },
+                        onChanged: (value) {
+                          setState(() {});
+                          name = value;
+                        },
                       ),
-                    )
-                  ],
+                      TextFormField(
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                            hintText: "Enter Password", labelText: "Password"),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Password cannot be empty";
+                          }
+                          if (value.length < 6) {
+                            return "Password too short. Type more than 6 letters";
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                      const SizedBox(height: 50),
+                      Material(
+                        color: Colors.deepPurple,
+                        borderRadius:
+                            BorderRadius.circular(changeButton ? 50 : 8),
+                        child: InkWell(
+                          onTap: () => moveToHome(context),
+                          child: AnimatedContainer(
+                            duration: const Duration(seconds: 1),
+                            width: changeButton ? 50 : 150,
+                            height: 50,
+                            alignment: Alignment.center,
+                            child: changeButton
+                                ? const Icon(
+                                    Icons.done,
+                                    color: Colors.white,
+                                  )
+                                : const Text(
+                                    "Login",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 17),
+                                  ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             )
