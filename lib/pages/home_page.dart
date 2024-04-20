@@ -9,8 +9,6 @@ class HomePage extends StatelessWidget {
     num days = 15;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        foregroundColor: Colors.white,
         title: const Text("Catalog App"),
       ),
       body: Center(child: Text("Welcome to $days days of Flutter")),
