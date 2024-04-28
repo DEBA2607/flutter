@@ -27,6 +27,8 @@ class Item {
         color: map["color"],
         imgURL: map["image"]);
   }
+
+  String? get image => null;
   toMap() => {
         "id": id,
         "name": name,
