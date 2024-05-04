@@ -1,8 +1,5 @@
-import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
-import "package:flutter/widgets.dart";
 import "package:flutter_catalog/models/catalog.dart";
-import "package:flutter_catalog/widgets/homepage%20widgets/catalog_image.dart";
 import "package:flutter_catalog/widgets/themes.dart";
 import "package:velocity_x/velocity_x.dart";
 
@@ -13,7 +10,9 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: MyTheme.creamColor,
       body: SafeArea(
           child: Column(
@@ -34,7 +33,13 @@ class HomeDetailPage extends StatelessWidget {
                       .color(MyTheme.darkBluishColor)
                       .make(),
                   catalog.desc.text.xl.textStyle(context.captionStyle).make(),
-                  10.heightBox,
+                  50.heightBox,
+                  "Ut temporibus aut saepe accusamus dolores temporibus voluptas.Atque pariatur aut est qui. Dolore similique ea commodi. Quo consequatur explicabo ea velit aut.Dolorem ducimus officiis repellendus."
+                      .text
+                      .textStyle(context.captionStyle)
+                      .xl
+                      .make()
+                      .p32()
                 ]).py32()),
           ))
         ],
