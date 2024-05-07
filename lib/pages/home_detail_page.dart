@@ -13,7 +13,7 @@ class HomeDetailPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       body: SafeArea(
           child: Column(
         children: [
@@ -26,12 +26,10 @@ class HomeDetailPage extends StatelessWidget {
             arcType: VxArcType.convey,
             height: 30,
             child: Container(
-                color: Colors.white,
+                color: context.canvasColor,
                 width: context.screenWidth,
                 child: Column(children: [
-                  catalog.name.text.bold.xl2
-                      .color(MyTheme.darkBluishColor)
-                      .make(),
+                  catalog.name.text.bold.xl2.color(context.accentColor).make(),
                   catalog.desc.text.xl.textStyle(context.captionStyle).make(),
                   50.heightBox,
                   "Ut temporibus aut saepe accusamus dolores temporibus voluptas.Atque pariatur aut est qui. Dolore similique ea commodi. Quo consequatur explicabo ea velit aut.Dolorem ducimus officiis repellendus."
