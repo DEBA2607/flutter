@@ -37,42 +37,42 @@ class CatalogItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VxBox(
-        child: Row(
-      children: [
-        Hero(
-          tag: Key(catalog.id.toString()),
-          child: CatalogImage(
-            image: catalog.imgURL,
-          ),
-        ),
-        Expanded(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            catalog.name.text.bold.xl.color(MyTheme.darkBluishColor).make(),
-            catalog.desc.text.textStyle(context.captionStyle).make(),
-            10.heightBox,
-            ButtonBar(
-              buttonPadding: EdgeInsets.zero,
-              alignment: MainAxisAlignment.spaceBetween,
-              children: [
-                "\$${catalog.price}".text.bold.xl.make(),
-                ElevatedButton(
-                  style: ButtonStyle(
-                      splashFactory: InkRipple.splashFactory,
-                      foregroundColor:
-                          const MaterialStatePropertyAll(Colors.white),
-                      backgroundColor:
-                          MaterialStatePropertyAll(MyTheme.darkBluishColor)),
-                  onPressed: () {},
-                  child: "Add to Cart".text.make().p0(),
-                )
-              ],
-            ).pOnly(right: 5.0)
-          ],
-        ))
-      ],
-    )).white.square(150).py16.roundedLg.make();
+      child: Row(
+        children: [
+          Hero(
+              tag: Key(catalog.id.toString()),
+              child: CatalogImage(
+                image: catalog.imgURL,
+              ).w24(context).pOnly(left: 10.0)),
+          Expanded(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              catalog.name.text.bold.xl.color(context.accentColor).make(),
+              catalog.desc.text.textStyle(context.captionStyle).make(),
+              10.heightBox,
+              ButtonBar(
+                buttonPadding: EdgeInsets.zero,
+                alignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  "\$${catalog.price}".text.bold.xl.make(),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                        splashFactory: InkRipple.splashFactory,
+                        foregroundColor:
+                            const MaterialStatePropertyAll(Colors.white),
+                        backgroundColor:
+                            MaterialStatePropertyAll(MyTheme.darkBluishColor)),
+                    onPressed: () {},
+                    child: "Add to Cart".text.make().p0(),
+                  )
+                ],
+              ).pOnly(right: 5.0)
+            ],
+          ).p16())
+        ],
+      ),
+    ).color(context.cardColor).rounded.square(150).make().py16();
   }
 }

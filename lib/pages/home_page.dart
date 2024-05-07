@@ -5,8 +5,8 @@ import "package:flutter_catalog/models/catalog.dart";
 import "package:flutter_catalog/utils/routes.dart";
 import "package:flutter_catalog/widgets/homepage%20widgets/catalog_header.dart";
 import "package:flutter_catalog/widgets/homepage%20widgets/catalog_list.dart";
-import "dart:convert";
 import "package:flutter_catalog/widgets/themes.dart";
+import "dart:convert";
 import "package:velocity_x/velocity_x.dart";
 
 class HomePage extends StatefulWidget {
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: MyTheme.creamColor,
+        backgroundColor: context.canvasColor,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.pushNamed(context, MyRoutes.cartRoute);
