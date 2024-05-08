@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/pages/home_detail_page.dart';
 import 'package:flutter_catalog/widgets/homepage%20widgets/catalog_image.dart';
-import 'package:flutter_catalog/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CatalogList extends StatelessWidget {
@@ -15,7 +13,7 @@ class CatalogList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: CatalogModel.items.length,
       itemBuilder: (context, index) {
-        final catalog = CatalogModel.items[index];
+        final catalog = CatalogModel.getByPos(index);
         return InkWell(
           onTap: () => Navigator.push(
               context,
@@ -62,8 +60,8 @@ class CatalogItem extends StatelessWidget {
                         splashFactory: InkRipple.splashFactory,
                         foregroundColor:
                             const MaterialStatePropertyAll(Colors.white),
-                        backgroundColor:
-                            MaterialStatePropertyAll(MyTheme.darkBluishColor)),
+                        backgroundColor: MaterialStatePropertyAll(
+                            context.theme.highlightColor)),
                     onPressed: () {},
                     child: "Add to Cart".text.make().p0(),
                   )

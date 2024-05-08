@@ -5,7 +5,6 @@ import "package:flutter_catalog/models/catalog.dart";
 import "package:flutter_catalog/utils/routes.dart";
 import "package:flutter_catalog/widgets/homepage%20widgets/catalog_header.dart";
 import "package:flutter_catalog/widgets/homepage%20widgets/catalog_list.dart";
-import "package:flutter_catalog/widgets/themes.dart";
 import "dart:convert";
 import "package:velocity_x/velocity_x.dart";
 
@@ -42,7 +41,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             Navigator.pushNamed(context, MyRoutes.cartRoute);
           },
-          backgroundColor: MyTheme.darkBluishColor,
+          backgroundColor: context.theme.highlightColor,
           foregroundColor: Colors.white,
           child: const Icon(CupertinoIcons.cart),
         ),
