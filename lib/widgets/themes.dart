@@ -7,6 +7,7 @@ class MyTheme {
       fontFamily: GoogleFonts.poppins().fontFamily,
       cardColor: Colors.white,
       canvasColor: creamColor,
+      highlightColor: darkBluishColor,
       colorScheme: ColorScheme.light(secondary: darkBluishColor),
       appBarTheme: const AppBarTheme(
         color: Colors.white,
@@ -17,6 +18,7 @@ class MyTheme {
       fontFamily: GoogleFonts.poppins().fontFamily,
       cardColor: Colors.black,
       canvasColor: darkmodeColor,
+      highlightColor: lightBluishColor,
       colorScheme: const ColorScheme.dark(secondary: Colors.white),
       appBarTheme: const AppBarTheme(
         color: Colors.black,
@@ -27,5 +29,5 @@ class MyTheme {
   static Color creamColor = const Color(0xfff5f5f5);
   static Color darkmodeColor = Vx.gray900;
   static Color darkBluishColor = const Color(0xff403b5f);
-  static Color lightBluishColor = Vx.purple400;
+  static Color lightBluishColor = Vx.indigo500;
 }
