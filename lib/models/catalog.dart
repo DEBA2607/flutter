@@ -1,12 +1,15 @@
 class CatalogModel {
+  static final catModel = CatalogModel._internal();
+  CatalogModel._internal();
+  factory CatalogModel() => catModel;
+
   static List<Item> items = [];
 
   //Get Item by ID
-   Item getById(num id) =>
-      items.firstWhere((element) => element.id == id);
+  Item getById(num id) => items.firstWhere((element) => element.id == id);
 
   //Get Item by Position
-   Item getByPos(int pos) => items[pos];
+  Item getByPos(int pos) => items[pos];
 }
 
 class Item {
