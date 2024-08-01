@@ -7,16 +7,16 @@ import 'package:velocity_x/velocity_x.dart';
 
 class AddToCart extends StatelessWidget {
   final Item catalog;
-  AddToCart(
+  const AddToCart(
     Key? key,
     this.catalog,
   ) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    VxState.watch(context, on: [AddMutation]);
-    final CartModel _cart = (VxState.store as MyStore).cart;
-    bool isInCart = _cart.items.contains(catalog);
+    VxState.watch(context, on: [AddMutation,RemoveMutation]);
+    final CartModel cart = (VxState.store as MyStore).cart;
+    bool isInCart = cart.items.contains(catalog);
     return ElevatedButton(
       style: ButtonStyle(
           splashFactory: InkRipple.splashFactory,
